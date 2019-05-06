@@ -31,12 +31,12 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-        - image: 'cdssnc/lighthouse-scores:latest'
+        - image: 'gcr.io/security-goals/checks/lighthouse-scores:latest'
           imagePullPolicy: Always
           name: 'lighthouse-scores'
           env:
             - name: ORIGIN
-              value: 'cdssnc/lighthouse-scores:latest'
+              value: 'gcr.io/security-goals/checks/lighthouse-scores:latest'
             - name: COMPONENT
               value: 'Source code'
             - name: DESCRIPTION
