@@ -6,7 +6,7 @@ The following environmental variables are required:
 
 | Name      | Description                                                                          | Default |
 | --------- | ------------------------------------------------------------------------------------ | ------- |
-| REPO_URL  | The full URL of the GitHub repo to check ex. `https://github.com/cds-snc/symmorfosi` | `""`    |
+| REPO_URL  | The full URL of the GitHub repo to check ex. `https://github.com/cds-snc/security-goals` | `""`    |
 | SATISFIES | The controls this check satisfies ex. 'AB-12'                                        | `""`    |
 
 The following environmental variables are optional:
@@ -25,18 +25,18 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: 'github-issues-check-compliance'
-  namespace: symmorfosi
+  namespace: security-goals
 spec:
   template:
     spec:
       restartPolicy: Never
       containers:
-        - image: 'cdssnc/github-issues-check-compliance:latest'
+        - image: 'gcr.io/security-goals/checks/github-issues:latest'
           imagePullPolicy: Always
           name: 'github-issues-check-compliance'
           env:
             - name: ORIGIN
-              value: 'cdssnc/github-issues-check-compliance:latest'
+              value: 'gcr.io/security-goals/checks/github-issues:latest'
             - name: COMPONENT
               value: 'Source code'
             - name: DESCRIPTION
@@ -44,7 +44,7 @@ spec:
             - name: SATISFIES
               value: 'AB-12'
             - name: REPO
-              value: 'https://github.com/cds-snc/symmorfosi'
+              value: 'https://github.com/cds-snc/security-goals'
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks

@@ -10,7 +10,7 @@ steps:
       [
         'build',
         '-t',
-        'gcr.io/$PROJECT_ID/checks/github-issues:$BRANCH_NAME-$SHORT_SHA',
+        'gcr.io/$PROJECT_ID/checks/github-issues:$SHORT_SHA',
         '-t',
         'gcr.io/$PROJECT_ID/checks/github-issues:latest',
         '-f',
@@ -18,5 +18,5 @@ steps:
         '.',
       ]
 images:
-  - 'gcr.io/$PROJECT_ID/checks/github-issues:$BRANCH_NAME-$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/checks/github-issues:$SHORT_SHA'
   - 'gcr.io/$PROJECT_ID/checks/github-issues:latest'
