@@ -1,4 +1,4 @@
-## Pod Check container
+## Pod exists container
 
 The purpose of this check is to see if a pod is running inside a kubernetes cluster.
 
@@ -24,19 +24,19 @@ A job might look something like this:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: 'pod-check-compliance'
-  namespace: symmorfosi
+  name: 'pod-exists'
+  namespace: security-goals
 spec:
   template:
     spec:
       restartPolicy: Never
       containers:
-        - image: 'cdssnc/pod-check-compliance:latest'
+        - image: 'gcr.io/security-goals/checks/pod-exists:latest'
           imagePullPolicy: Always
-          name: 'pod-check-compliance'
+          name: 'pod-exists'
           env:
             - name: ORIGIN
-              value: 'cdssnc/pod-check-compliance:latest'
+              value: 'gcr.io/security-goals/checks/pod-exists:latest'
             - name: COMPONENT
               value: 'Cluster'
             - name: DESCRIPTION

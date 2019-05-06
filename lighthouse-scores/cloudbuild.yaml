@@ -21,5 +21,5 @@ steps:
         '.',
       ]
 images:
-  - 'gcr.io/$PROJECT_ID/checks/lighthouse-scores:$BRANCH_NAME-$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/checks/lighthouse-scores:$SHORT_SHA'
   - 'gcr.io/$PROJECT_ID/checks/lighthouse-scores:latest'
