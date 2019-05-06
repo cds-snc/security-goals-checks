@@ -24,7 +24,7 @@ A job might look something like this:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: 'github-issues-check-compliance'
+  name: 'github-issues'
   namespace: security-goals
 spec:
   template:
@@ -33,7 +33,7 @@ spec:
       containers:
         - image: 'gcr.io/security-goals/checks/github-issues:latest'
           imagePullPolicy: Always
-          name: 'github-issues-check-compliance'
+          name: 'github-issues'
           env:
             - name: ORIGIN
               value: 'gcr.io/security-goals/checks/github-issues:latest'
