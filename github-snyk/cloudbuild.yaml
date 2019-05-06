@@ -1,0 +1,21 @@
+steps:
+  - name: 'golang:stretch'
+    entrypoint: 'go'
+    dir: 'github-snyk'
+    args: ['test']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'github-snyk'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/checks/github-snyk:$SHORT_SHA',
+        '-t',
+        'gcr.io/$PROJECT_ID/checks/github-snyk:latest',
+        '-f',
+        'Dockerfile',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/checks/github-snyk:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/checks/github-snyk:latest'

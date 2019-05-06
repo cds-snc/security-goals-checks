@@ -31,12 +31,12 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-        - image: 'gcr.io/security-goals/checks/github-reviews:latestt'
+        - image: 'gcr.io/security-goals/checks/github-reviews:latest'
           imagePullPolicy: Always
           name: 'github-reviews'
           env:
             - name: ORIGIN
-              value: 'gcr.io/security-goals/checks/github-reviews:latestt'
+              value: 'gcr.io/security-goals/checks/github-reviews:latest'
             - name: COMPONENT
               value: 'Source code'
             - name: DESCRIPTION
