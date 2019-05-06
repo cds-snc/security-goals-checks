@@ -1,0 +1,22 @@
+steps:
+  - name: node:11.10-alpine
+    id: test
+    dir: lighthouse-scores
+    entrypoint: npm
+    args: ['test']
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'lighthouse-scores'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/checks/lighthouse-scores:$SHORT_SHA',
+        '-t',
+        'gcr.io/$PROJECT_ID/checks/lighthouse-scores:latest',
+        '-f',
+        'Dockerfile',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/checks/lighthouse-scores:$BRANCH_NAME-$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/checks/lighthouse-scores:latest'

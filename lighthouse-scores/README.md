@@ -24,19 +24,19 @@ A job might look something like this:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: 'lighthouse-compliance'
+  name: 'lighthouse-scores'
   namespace: symmorfosi
 spec:
   template:
     spec:
       restartPolicy: Never
       containers:
-        - image: 'cdssnc/lighthouse-compliance:latest'
+        - image: 'cdssnc/lighthouse-scores:latest'
           imagePullPolicy: Always
-          name: 'lighthouse-compliance'
+          name: 'lighthouse-scores'
           env:
             - name: ORIGIN
-              value: 'cdssnc/lighthouse-compliance:latest'
+              value: 'cdssnc/lighthouse-scores:latest'
             - name: COMPONENT
               value: 'Source code'
             - name: DESCRIPTION
