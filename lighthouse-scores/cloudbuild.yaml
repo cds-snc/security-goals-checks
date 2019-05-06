@@ -1,6 +1,6 @@
 steps:
 - name: node:11.10-alpine
-    id: test
+    id: install
     dir: lighthouse-scores
     entrypoint: npm
     args: ['install']
