@@ -6,7 +6,7 @@ The following environmental variables are required:
 
 | Name      | Description                                                                                          | Default |
 | --------- | ---------------------------------------------------------------------------------------------------- | ------- |
-| URL       | The URL to check ex. `https://github.com/cds-snc/symmorfosi/blob/master/compliance-api/.eslintrc.js` | `""`    |
+| URL       | The URL to check ex. `https://github.com/cds-snc/security-goals/blob/master/compliance-api/.eslintrc.js` | `""`    |
 | SATISFIES | The controls this check satisfies ex. 'AB-12'                                                        | `""`    |
 
 The following environmental variables are optional:
@@ -24,19 +24,19 @@ A job might look something like this:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: 'url-check-compliance'
-  namespace: symmorfosi
+  name: 'url-exists'
+  namespace: security-goals
 spec:
   template:
     spec:
       restartPolicy: Never
       containers:
-        - image: 'cdssnc/url-check-compliance:latest'
+        - image: 'gcr.io/security-goals/checks/url-exists:latest'
           imagePullPolicy: Always
-          name: 'url-check-compliance'
+          name: 'url-exists'
           env:
             - name: ORIGIN
-              value: 'cdssnc/url-check-compliance:latest'
+              value: 'gcr.io/security-goals/checks/url-exists:latest'
             - name: COMPONENT
               value: 'Source code'
             - name: DESCRIPTION
@@ -44,7 +44,7 @@ spec:
             - name: SATISFIES
               value: 'AB-12'
             - name: URL
-              value: 'https://github.com/cds-snc/symmorfosi/blob/master/compliance-api/.eslintrc.js'
+              value: 'https://github.com/cds-snc/security-goals/blob/master/compliance-api/.eslintrc.js'
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
