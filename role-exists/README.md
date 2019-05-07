@@ -24,19 +24,19 @@ A job might look something like this:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: 'roles-check-compliance'
-  namespace: symmorfosi
+  name: 'role-exists'
+  namespace: security-goals
 spec:
   template:
     spec:
       restartPolicy: Never
       containers:
-        - image: 'cdssnc/roles-check-compliance:latest'
+        - image: 'gcr.io/security-goals/checks/role-exists:latest'
           imagePullPolicy: Always
-          name: 'roles-check-compliance'
+          name: 'role-exists'
           env:
             - name: ORIGIN
-              value: 'cdssnc/roles-check-compliance:latest'
+              value: 'gcr.io/security-goals/checks/role-exists:latest'
             - name: COMPONENT
               value: 'Cluster'
             - name: DESCRIPTION
