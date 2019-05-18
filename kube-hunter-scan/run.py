@@ -43,5 +43,5 @@ print check
 if release:
     file_name = path + str(uuid.uuid4()) + ".json"
     f = open(file_name, "a")
-    f.write(check)
+    f.write(json.dumps(check))
     f.close()
