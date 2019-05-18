@@ -24,7 +24,9 @@ if len(obj["vulnerabilities"]) == 0:
     passed = "true"
 else:
     passed = "false"
-    
+
+vulnerabilities = map(lambda v: v["category"] + ": " + v["vulnerability"] + " - " + v["description"], obj["vulnerabilities"])   
+
 check = {
     "origin": origin,
     "component": component,
@@ -33,7 +35,7 @@ check = {
     "release": release,
     "passed": passed,
     "timestamp": datetime.datetime.utcnow().isoformat("T") + "Z",
-    "references": json.dumps(obj["vulnerabilities"])
+    "references": json.dumps(vulnerabilities)
 }
 
 print check
