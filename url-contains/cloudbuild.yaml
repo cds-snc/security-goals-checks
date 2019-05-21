@@ -1,0 +1,17 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'url-contains'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/checks/url-contains:$SHORT_SHA',
+        '-t',
+        'gcr.io/$PROJECT_ID/checks/url-contains:latest',
+        '-f',
+        'Dockerfile',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/checks/url-contains:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/checks/url-contains:latest'
