@@ -40,7 +40,9 @@ module UrlContains
         return 1
       end
 
-      res = HTTP::Client.get check["url"]
+      context = OpenSSL::SSL::Context::Client.insecure
+      client = HTTP::Client.new(URI.parse(check["url"]), tls: context)
+      res = client.get("/")
 
       if res.status_code < 400
         check["passed"] = res.body.index(check.["needle"]) != nil ? "true" : "false"
