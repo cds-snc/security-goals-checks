@@ -21,9 +21,9 @@ else:
 obj = yaml.load(output, Loader=yaml.FullLoader)
 
 if len(obj["vulnerabilities"]) == 0:
-    passed = "true"
+    passed = True
 else:
-    passed = "false"
+    passed = False
 
 vulnerabilities = map(lambda v: v["category"] + ": " + v["vulnerability"] + " - " + v["description"], obj["vulnerabilities"])   
 
