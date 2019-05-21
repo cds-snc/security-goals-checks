@@ -57,7 +57,7 @@ module UrlContains
             json.field "satisfies", check["satisfies"].split(",")
             json.field "release", check["release"]
             json.field "passed", check["passed"]
-            json.field "timestamp", Time.utc.to_rfc3339
+            json.field "timestamp", Time.now.to_rfc3339
             json.field "references", check["needle"]
           end
         end
