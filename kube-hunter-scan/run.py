@@ -5,7 +5,8 @@ import subprocess
 import uuid
 import yaml
 
-def main():
+
+if __name__== "__main__":
     origin = os.getenv("ORIGIN", "Missing origin")
     component = os.getenv("COMPONENT", "Missing componet")
     description = os.getenv("DESCRIPTION", "Missing description")
@@ -46,6 +47,3 @@ def main():
         f = open(file_name, "a")
         f.write(json.dumps(check))
         f.close()
-
-if __name__== "__main__":
-     main()
