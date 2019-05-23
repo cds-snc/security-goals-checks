@@ -52,7 +52,7 @@ module UrlContains
 
       puts check
 
-      if check["release"] == ""
+      if check["release"] != ""
         json_data = JSON.build do |json|
           json.object do
             json.field "origin", check["origin"]
