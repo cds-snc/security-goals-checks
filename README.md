@@ -17,7 +17,7 @@ The container should write a JSON file in the following format to the `OUT_PATH`
 
 ```
 {
-  "origin":"cdssnc/url-check-compliance:latest",
+  "origin":"gcr.io/security-goals/checks/url-exists:latest",
   "timestamp":"2018-10-25T14:33:26Z",
   "satisfies":[
      "SA-11 (1)"
