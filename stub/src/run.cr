@@ -1,0 +1,3 @@
+require "./stub"
+
+Stub.check

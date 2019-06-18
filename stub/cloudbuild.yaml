@@ -1,0 +1,17 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'stub'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/checks/stub:$SHORT_SHA',
+        '-t',
+        'gcr.io/$PROJECT_ID/checks/stub:latest',
+        '-f',
+        'Dockerfile',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/checks/stub:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/checks/stub:latest'
